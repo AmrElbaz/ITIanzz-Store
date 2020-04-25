@@ -1,5 +1,4 @@
-$(document).ready(function ()
-{
+$(document).ready(function () {
     // document ready => load from storage
     // JsonArray => storage ?
 
@@ -16,7 +15,7 @@ $(document).ready(function ()
         return allProducts;
     }
 
-    var addToCart = function(event){
+    var addToCart = function (event) {
 
         var productId = event.target.id;
         var product = {
@@ -42,17 +41,23 @@ $(document).ready(function ()
         localStorage.setItem('products', JSON.stringify(allProducts));
     };
 
-    $(".addToCart").on('click',(event) => addToCart(event));
+    $(".addToCart").on('click', (event) => addToCart(event));
 
-    $(".updateProduct").on('click',function (event) {
+    $(".updateProduct").on('click', function (event) {
         var productId = event.target.id;
-        window.location.href = "update-product?id="+productId;
+        window.location.href = "update-product?id=" + productId;
 
     });
 
-    $(".deleteProduct").on('click',function (event) {
+    $(".deleteProduct").on('click', function (event) {
         var productId = event.target.id;
-        window.location.href = "deleteProduct?id="+productId;
+        window.location.href = "deleteProduct?id=" + productId;
+    });
+    $(".view-product").on('click', function (event) {
+
+        var productId = $(this).parent().parent().find("a")[0].id;
+        console.log("on view-product click " + productId);
+        window.location.href = "view-product?id=" + productId;
     });
 
 });

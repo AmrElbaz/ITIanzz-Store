@@ -74,7 +74,9 @@ public class UpdateProductController extends HttpServlet {
         product.setDescription(description);
         product.setManufacturingName(manufacturingName);
         product.setManufacturingDate(LocalDate.parse(manufacturingDate, formatter));
-        product.setExpirationDate(LocalDate.parse(expirationDate, formatter));
+        if (expirationDate != null && !expirationDate.trim().isEmpty()) {
+            product.setExpirationDate(LocalDate.parse(expirationDate, formatter));
+        }
         product.setQuantity(Integer.parseInt(quantity));
         product.setPrimaryImage(allImages.stream().findFirst().get());
         product.setBuyPrice(Double.parseDouble(buyPrice));

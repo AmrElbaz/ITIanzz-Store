@@ -108,17 +108,15 @@
                             <div class="form-group col-md-6">
                                 <label for="manufacturingDatepicker">Manufacturing
                                     Date</label>
-                                <input class="form-control input-md manDate" type="text"
+                                <input class="form-control input-md manDate" type="date"
                                        placeholder="Product Manufacturing Date" id="manufacturingDatepicker" required
                                        name="manufacturingDate" value="${requestScope.product.manufacturingDate}"/>
-                                <label id="manufacturingDateValidationError"></label>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="expiretionDatepicker">Expiration Date</label>
-                                <input class="form-control input-md exDate" type="text" name="expirationDate"
-                                       placeholder="Product Expiration Date" id="expiretionDatepicker" required
+                                <input class="form-control input-md exDate" type="date" name="expirationDate"
+                                       placeholder="Product Expiration Date" id="expiretionDatepicker"
                                        value="${requestScope.product.expirationDate}"/>
-                                <label id="expiretionDateValidationError"></label>
                             </div>
                         </div>
 
@@ -137,19 +135,21 @@
                                 <label for="availableQuantity">Quantity</label>
                                 <input id="availableQuantity" name="quantity"
                                        value="${requestScope.product.quantity}" class="form-control input-md"
-                                       type="text" required/>
+                                       type="number" required min="1"/>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="buyPrice">Buy Price</label>
-                                <input type="text" class="form-control" id="buyPrice" name="buyPrice"
+                                <input type="number" class="form-control" id="buyPrice" name="buyPrice" min="0.1"
+                                       step="0.1"
                                        value="${requestScope.product.buyPrice}"/>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="sellPrice">Sell Price</label>
-                                <input type="text" class="form-control" id="sellPrice" name="sellPrice"
+                                <input type="number" class="form-control" id="sellPrice" name="sellPrice" min="0.1"
+                                       step="0.1"
                                        value="${requestScope.product.sellPrice}"/>
                             </div>
                         </div>
@@ -206,7 +206,9 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label class="control-label" for="files">Add Product Images</label>
-                                <input name="images" type='file' id="files" class="input-file" onchange="validateNumberOFiles(this.files.length, 5-${requestScope.product.images.size()})" accept="image/*" multiple/>
+                                <input name="images" type='file' id="files" class="input-file"
+                                       onchange="validateNumberOFiles(this.files.length, 5-${requestScope.product.images.size()})"
+                                       accept="image/*" multiple/>
                             </div>
                         </div>
                         <br>

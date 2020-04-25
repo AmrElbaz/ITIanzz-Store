@@ -1,13 +1,14 @@
 $(document).ready(function () {
 
+    var min = 0;
+    let maxPrice = $("#maxPrice").val();
     var productJSON = {
         categoryId: 0,
-        min: 0,
-        max: 0,
+        min: min,
+        max: maxPrice,
         productName: ""
-    }
-    let maxPrice = $("#maxPrice").val();
-    var min = 0;
+    };
+
     $("#slider-range").slider({
         range: true,
         min: 0,
@@ -114,14 +115,14 @@ $(document).ready(function () {
             var productId = event.target.id;
             window.location.href = "deleteProduct?id=" + productId;
         });
+        $(".view-product").on('click', function (event) {
+
+            var productId = $(this).parent().parent().find("a")[0].id;
+            console.log("on view-product click " + productId);
+            window.location.href = "view-product?id=" + productId;
+        });
     }
 
-    $(".view-product").on('click', function (event) {
-
-        var productId = $(this).parent().parent().find("a")[0].id;
-        console.log("on view-product click " + productId);
-        window.location.href = "view-product?id=" + productId;
-    });
 
 });
 
